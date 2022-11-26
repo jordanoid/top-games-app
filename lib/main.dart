@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
-import 'package:game_info_app/screens/game.dart';
+import 'package:game_info_app/screens/aboutScreen.dart';
+import 'package:game_info_app/screens/hofScreen.dart';
+import 'package:game_info_app/screens/popularScreen.dart';
+import 'package:game_info_app/screens/splashScreen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,7 +20,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: NavBar());
+        home: const SplashScreenPage());
   }
 }
 
@@ -31,12 +34,12 @@ class NavBar extends StatefulWidget {
 class _NavBarState extends State<NavBar> {
   final items = const [
     Icon(
-      Icons.gamepad,
+      Icons.star_border,
       size: 30,
     ),
-    Icon(Icons.person, size: 30),
+    Icon(Icons.local_fire_department, size: 30),
     Icon(
-      Icons.info_rounded,
+      Icons.perm_identity,
       size: 30,
     )
   ];
@@ -46,7 +49,7 @@ class _NavBarState extends State<NavBar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blue,
+      backgroundColor: Colors.white,
       bottomNavigationBar: CurvedNavigationBar(
         items: items,
         index: index,
@@ -55,13 +58,15 @@ class _NavBarState extends State<NavBar> {
             index = selctedIndex;
           });
         },
-        height: 70,
-        backgroundColor: Colors.transparent,
+        height: 50,
+        backgroundColor: Colors.white,
         animationDuration: const Duration(milliseconds: 300),
+        buttonBackgroundColor: const Color(0xffe12729),
+        color: const Color(0xfff8cc1b),
         // animationCurve: ,
       ),
       body: Container(
-          color: Colors.blue,
+          color: Colors.transparent,
           width: double.infinity,
           height: double.infinity,
           alignment: Alignment.center,
@@ -73,13 +78,13 @@ class _NavBarState extends State<NavBar> {
     Widget widget;
     switch (index) {
       case 0:
-        widget = const GamePage();
+        widget = const HallofFamePage();
         break;
       case 1:
-        widget = const GamePage();
+        widget = const PopularPage();
         break;
       default:
-        widget = const GamePage();
+        widget = const AboutPage();
         break;
     }
     return widget;
