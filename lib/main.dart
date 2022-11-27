@@ -83,8 +83,11 @@ class _NavBarState extends State<NavBar> {
       case 1:
         widget = const PopularPage();
         break;
-      default:
+      case 2:
         widget = const ProfilePage();
+        break;
+      default:
+        widget = const HallofFamePage();
         break;
     }
     return widget;
