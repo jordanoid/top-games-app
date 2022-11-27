@@ -1,20 +1,16 @@
 class Game {
   final Images images;
-  final Rating rating;
   final int numReviews;
   final int numTopCriticReviews;
-  final int medianScore;
-  final double topCriticScore;
+  final num topCriticScore;
   final String tier;
   final String name;
   final String description;
 
   Game(
       {required this.images,
-      required this.rating,
       required this.numReviews,
       required this.numTopCriticReviews,
-      required this.medianScore,
       required this.topCriticScore,
       required this.tier,
       required this.name,
@@ -23,10 +19,8 @@ class Game {
   factory Game.fromJson(Map<String, dynamic> json) {
     return Game(
       images: Images.fromJson(json['images']),
-      rating: Rating.fromJson(json['Rating']),
       numReviews: json['numReviews'],
       numTopCriticReviews: json['numTopCriticReviews'],
-      medianScore: json['medianScore'],
       topCriticScore: json['topCriticScore'],
       tier: json['tier'],
       name: json['name'],
@@ -36,10 +30,8 @@ class Game {
 
   Map<String, dynamic> toJson() => {
         'images': images.toJson(),
-        'Rating': rating.toJson(),
         'numReviews': numReviews,
         'numTopCriticReviews': numTopCriticReviews,
-        'medianScore': medianScore,
         'topCriticScore': topCriticScore,
         'tier': tier,
         'name': name,
@@ -62,10 +54,10 @@ class Images {
 }
 
 class Box {
-  String? og;
-  String? sm;
+  final String og;
+  final String sm;
 
-  Box({this.og, this.sm});
+  Box({required this.og, required this.sm});
 
   factory Box.fromJson(Map<String, dynamic> json) {
     return Box(

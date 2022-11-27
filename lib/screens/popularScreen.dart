@@ -89,8 +89,9 @@ class _PopularPageState extends State<PopularPage> {
                   );
                 });
           } else {
-            return const Center(
-              child: Text("Loading...."),
+            return Container(
+              alignment: Alignment.center,
+              child: const CircularProgressIndicator(),
             );
           }
         },
