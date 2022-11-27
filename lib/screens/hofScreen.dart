@@ -2,7 +2,10 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:game_info_app/model/hallofFame.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
+
+import 'detailScreen.dart';
 
 class HallofFamePage extends StatefulWidget {
   const HallofFamePage({super.key});
@@ -23,15 +26,15 @@ class _HallofFamePageState extends State<HallofFamePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.grey[200],
+        backgroundColor: const Color.fromARGB(255, 255, 234, 150),
         appBar: AppBar(
           centerTitle: true,
           backgroundColor: const Color(0xfff8cc1b),
-          title: const Text('Hall of Fame',
-              style: TextStyle(
-                  fontSize: 20,
+          title: Text('Hall of Fame',
+              style: GoogleFonts.montserrat(
+                  fontSize: 30,
                   fontWeight: FontWeight.bold,
-                  color: Colors.black)),
+                  color: const Color(0xffe12729))),
         ),
         body: FutureBuilder(
           future: hof,
@@ -44,43 +47,57 @@ class _HallofFamePageState extends State<HallofFamePage> {
                 itemCount: snapshot.data!.length,
                 itemBuilder: (BuildContext context, int index) {
                   return Card(
-                      color: Colors.white,
+                      color: const Color(0xffe12729),
+                      clipBehavior: Clip.antiAliasWithSaveLayer,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20)),
                       child: InkWell(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => DetailGamePage(
+                                    item: snapshot.data![index].id,
+                                    title: snapshot.data![index].name),
+                              ),
+                            );
+                          },
                           child: Column(
-                        children: [
-                          Image.network(
-                            "https://img.opencritic.com/${snapshot.data![index].images.banner.og}",
-                            height: 400,
-                            width: 300,
-                          ),
-                        ],
-                      )));
+                            children: [
+                              Image.network(
+                                "https://img.opencritic.com/${snapshot.data![index].images.banner.og}",
+                                height: 230,
+                                width: 500,
+                                fit: BoxFit.cover,
+                                alignment: Alignment.topCenter,
+                              ),
+                              Center(
+                                  child: Text(
+                                snapshot.data![index].name,
+                                style: GoogleFonts.russoOne(
+                                    fontSize: 25,
+                                    fontWeight: FontWeight.w200,
+                                    color: const Color(0xffD6E4E5)),
+                              )),
+                              Center(
+                                  child: Text(
+                                "Tier : ${snapshot.data![index].tier}",
+                                style: GoogleFonts.russoOne(
+                                    fontSize: 25,
+                                    fontWeight: FontWeight.w200,
+                                    color: const Color(0xffD6E4E5)),
+                              )),
+                              Center(
+                                  child: Text(
+                                "Score : ${snapshot.data![index].topCriticScore.toString()}",
+                                style: GoogleFonts.russoOne(
+                                    fontSize: 25,
+                                    fontWeight: FontWeight.w200,
+                                    color: const Color(0xffD6E4E5)),
+                              )),
+                            ],
+                          )));
                 },
-              );
-            }
-            if (snapshot.hasData) {
-              return SizedBox(
-                height: 230,
-                child: ListView.builder(
-                  physics: const ClampingScrollPhysics(),
-                  shrinkWrap: true,
-                  scrollDirection: Axis.vertical,
-                  itemCount: snapshot.data!.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    return Card(
-                        color: Colors.white,
-                        child: InkWell(
-                            child: Container(
-                                height: 200,
-                                width: 150,
-                                child: Column(
-                                  children: [
-                                    Image.network(
-                                        "https://img.opencritic.com/${snapshot.data![index].images.banner.og}"),
-                                  ],
-                                ))));
-                  },
-                ),
               );
             } else {
               return const Center(

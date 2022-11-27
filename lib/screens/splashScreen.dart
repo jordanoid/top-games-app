@@ -17,7 +17,7 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
 
   openSplashScreen() async {
     //bisa diganti beberapa detik sesuai keinginan
-    var durasiSplash = const Duration(seconds: 6);
+    var durasiSplash = const Duration(seconds: 4);
     return Timer(durasiSplash, () {
       //pindah ke halaman home
       Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) {
@@ -33,7 +33,7 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
       body: Container(
         alignment: Alignment.bottomCenter,
         child: Image.asset(
-          "assets/splash2.gif",
+          "assets/images/splash2.gif",
           width: 250,
           height: 250,
           gaplessPlayback: true,

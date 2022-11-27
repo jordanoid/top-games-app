@@ -1,15 +1,13 @@
 class HallofFame {
   final String name;
   final int id;
-  final String firstReleaseDate;
   final String tier;
   final Images images;
-  final int topCriticScore;
+  final num topCriticScore;
 
   HallofFame(
       {required this.name,
       required this.id,
-      required this.firstReleaseDate,
       required this.tier,
       required this.images,
       required this.topCriticScore});
@@ -18,7 +16,6 @@ class HallofFame {
     return HallofFame(
       name: json['name'],
       id: json['id'],
-      firstReleaseDate: json['firstReleaseDate'],
       tier: json['tier'],
       images: Images.fromJson(json['images']),
       topCriticScore: json['topCriticScore'],
@@ -28,7 +25,6 @@ class HallofFame {
   Map<String, dynamic> toJson() => {
         'name': name,
         'id': id,
-        'firstReleaseDate': firstReleaseDate,
         'tier': tier,
         'images': images.toJson(),
         'topCriticScore': topCriticScore,

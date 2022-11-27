@@ -1,20 +1,17 @@
 class Popular {
-  final num topCriticScore;
   final String tier;
   final String name;
   final int id;
   final Images images;
 
   Popular(
-      {required this.topCriticScore,
-      required this.tier,
+      {required this.tier,
       required this.name,
       required this.id,
       required this.images});
 
   factory Popular.fromJson(Map<String, dynamic> json) {
     return Popular(
-      topCriticScore: json['topCriticScore'],
       tier: json['tier'],
       name: json['name'],
       id: json['id'],

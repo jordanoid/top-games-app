@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
 
-class DetailGamePage extends StatelessWidget {
-  const DetailGamePage({super.key});
+class DetailGamePage extends StatefulWidget {
+  final int item;
+  final String title;
+  const DetailGamePage({super.key, required this.item, required this.title});
 
+  @override
+  State<DetailGamePage> createState() => _DetailGamePageState();
+}
+
+class _DetailGamePageState extends State<DetailGamePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

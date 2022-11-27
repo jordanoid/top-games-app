@@ -59,7 +59,7 @@ class _NavBarState extends State<NavBar> {
           });
         },
         height: 50,
-        backgroundColor: Colors.white,
+        backgroundColor: const Color.fromARGB(255, 255, 234, 150),
         animationDuration: const Duration(milliseconds: 300),
         buttonBackgroundColor: const Color(0xffe12729),
         color: const Color(0xfff8cc1b),
@@ -84,7 +84,7 @@ class _NavBarState extends State<NavBar> {
         widget = const PopularPage();
         break;
       default:
-        widget = const AboutPage();
+        widget = const ProfilePage();
         break;
     }
     return widget;
