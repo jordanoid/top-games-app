@@ -30,7 +30,7 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.black87,
+        backgroundColor: const Color(0xfff8cc1b),
         body: Container(
             alignment: Alignment.center,
             child: Column(
@@ -39,12 +39,12 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
                   height: 250,
                 ),
                 Image.asset(
-                  "assets/images/splash2.gif",
+                  "assets/images/splash.jpg",
                   width: 250,
                   height: 250,
-                  gaplessPlayback: true,
                 ),
-                Text("Game Information",
+                const SizedBox(height: 20),
+                Text("TOP GAMES",
                     style: GoogleFonts.contrailOne(
                         fontSize: 30, color: Colors.white))
               ],
