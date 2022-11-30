@@ -1,4 +1,4 @@
-# game_info_app
+# top_games_app
 
 A new Flutter project.
 
